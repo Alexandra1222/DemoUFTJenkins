@@ -16,3 +16,4 @@ WpfWindow("Micro Focus MyFlight Sample").WpfTable("flightsDataGrid").SelectCell 
 WpfWindow("Micro Focus MyFlight Sample").WpfButton("SELECT FLIGHT").Click @@ hightlight id_;_2081298856_;_script infofile_;_ZIP::ssf35.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").WpfEdit("passengerName").Set "jhon" @@ hightlight id_;_2048294184_;_script infofile_;_ZIP::ssf36.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").WpfButton("ORDER").Click @@ hightlight id_;_2048293560_;_script infofile_;_ZIP::ssf37.xml_;_
+WpfWindow("Micro Focus MyFlight Sample").Close
