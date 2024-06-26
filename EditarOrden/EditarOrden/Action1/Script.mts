@@ -5,6 +5,6 @@ WpfWindow("Micro Focus MyFlight Sample").WpfTabStrip("WpfTabStrip").Select "SEAR
 WpfWindow("Micro Focus MyFlight Sample").WpfRadioButton("byNumberRadio").Set @@ hightlight id_;_2055604920_;_script infofile_;_ZIP::ssf5.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").WpfEdit("byNumberWatermark").Set "162" @@ hightlight id_;_2048059888_;_script infofile_;_ZIP::ssf6.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").WpfButton("SEARCH").Click @@ hightlight id_;_1991513152_;_script infofile_;_ZIP::ssf7.xml_;_
-WpfWindow("Micro Focus MyFlight Sample").WpfEdit("passengerName").Set "Siri" @@ hightlight id_;_1997517040_;_script infofile_;_ZIP::ssf8.xml_;_
+WpfWindow("Micro Focus MyFlight Sample").WpfEdit("passengerName").Set "Ofelia" @@ hightlight id_;_1997517040_;_script infofile_;_ZIP::ssf8.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").WpfButton("updateBtn").Click @@ hightlight id_;_1998362616_;_script infofile_;_ZIP::ssf9.xml_;_
 WpfWindow("Micro Focus MyFlight Sample").Close @@ hightlight id_;_2689432_;_script infofile_;_ZIP::ssf10.xml_;_
