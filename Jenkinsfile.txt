@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    jiraSendBuildInfo(issue_key: ['PN-4','PN-8'], issue_state:'complete')
+                    jiraSendBuildInfo(issue_key: 'PN-1', issue_state:'complete')
                 }
             }
         }
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying to Staging from master...'
-                    jiraSendDeploymentInfo(environmentId: 'us-stg-1', environmentName: 'us-stg-1', environmentType: 'staging', issue_key: ['PN-4','PN-8'], issue_state:'complete')
+                    jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state:'complete')
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             }
             steps {
                 echo 'Deploying to Production from master...'
-                jiraSendDeploymentInfo(environmentId: 'us-prod-1', environmentName: 'us-prod-1', environmentType: 'production',issue_key: ['PN-4','PN-8'], issue_state:'complete')
+                jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state:'complete')
             }
         }
     }
