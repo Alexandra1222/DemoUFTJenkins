@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    jiraSendBuildInfo(site: 'https://bcba-testing-factory.atlassian.net/jira/core/projects/PN/board', issue_key: ['PN-4','PN-8'], issue_state:'complete')
+                    jiraSendBuildInfo(issue_key: ['PN-4','PN-8'], issue_state:'complete')
                 }
             }
         }
