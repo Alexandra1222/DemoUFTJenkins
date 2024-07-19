@@ -1,31 +1,36 @@
 pipeline {
-     agent any
-     stages {
-         stage('Deploy - Staging') {
-             when {
-                 branch 'master'
-             }
-             steps {
-                 echo 'Desplegando a  Staging desde master...'
-             }
-             post {
-                 always {
-                     jiraSendDeploymentInfo environmentId: 'us-stg-1', environmentName: 'us-stg-1', environmentType: 'staging'
-                 }
-             }
-         }
-         stage('Deploy - Production') {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Building...'
+                    jiraSendBuildInfo(site: 'https://bcba-testing-factory.atlassian.net/jira/core/projects/PN/board', issue_key: ['PN-4','PN-8'], issue_state:'complete')
+                }
+            }
+        }
+
+        stage('Deploy - Staging') {
             when {
                 branch 'master'
             }
             steps {
-                echo 'Realizando el despliegue desde maestro...'
-            }
-            post {
-                always {
-                    jiraSendDeploymentInfo environmentId: 'us-prod-1', environmentName: 'us-prod-1', environmentType: 'production'
+                script {
+                    echo 'Deploying to Staging from master...'
+                    jiraSendDeploymentInfo(environmentId: 'us-stg-1', environmentName: 'us-stg-1', environmentType: 'staging', issue_key: ['PN-4','PN-8'], issue_state:'complete')
                 }
             }
-         }
-     }
+        }
+
+        stage('Deploy - Production') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo 'Deploying to Production from master...'
+                jiraSendDeploymentInfo(environmentId: 'us-prod-1', environmentName: 'us-prod-1', environmentType: 'production',issue_key: ['PN-4','PN-8'], issue_state:'complete')
+            }
+        }
+    }
 }
