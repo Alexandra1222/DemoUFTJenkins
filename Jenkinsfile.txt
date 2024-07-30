@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building...'
-                    jiraSendBuildInfo(issue_key: 'PN-1', issue_state:'complete')
+                    jiraSendBuildInfo(issue_key: 'PN-1', issue_state: 'complete')
                 }
             }
         }
@@ -18,7 +18,19 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying to Staging from master...'
-                    jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state:'complete')
+                    jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state: 'in_progress', site: 'https://bcba-testing-factory.atlassian.net/jira/core/projects/PN/board')
+                    updateJiraExt {
+                        issueStrategy {
+                            firstWordOfCommit()
+                        }
+                        jiraOperations {
+                            transition('Finalizada')
+                            addComment('Añadido a Jenkins de forma exitosa', true)
+                            addLabel('En Jenkins')
+                            addLabel('En Github')
+                            updateField('customField_123', 'Hello World')
+                        }
+                    }
                 }
             }
         }
@@ -28,9 +40,12 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo 'Deploying to Production from master...'
-                jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state:'complete')
+                script {
+                    echo 'Deploying to Production from master...'
+                    jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state: 'complete')
+                }
             }
         }
     }
 }
+
