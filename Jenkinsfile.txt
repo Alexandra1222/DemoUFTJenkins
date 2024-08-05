@@ -7,17 +7,7 @@ pipeline {
                 script {
                     echo 'Building...'
                     jiraSendBuildInfo(issue_key: 'PN-1', issue_state: 'complete')
-                }
-            }
-        }
-
-        stage('Deploy - Staging') {
-            when {
-                branch 'master'
-            }
-            steps {
-                script {
-                    echo 'Deploying to Staging from master...'
+                    jiraComment body: 'Este es un comentario  de actualización hecho desde un pipeline de Jenkins', issueKey: 'PN-1'
                     jiraSendDeploymentInfo(issue_key: 'PN-1', issue_state: 'in_progress', site: 'https://bcba-testing-factory.atlassian.net/jira/core/projects/PN/board')
                     updateJiraExt {
                         issueStrategy {
@@ -31,6 +21,19 @@ pipeline {
                             updateField('customField_123', 'Hello World')
                         }
                     }
+
+                }
+            }
+        }
+
+        stage('Deploy - Staging') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    echo 'Deploying to Staging from master...'
+                    
                 }
             }
         }
